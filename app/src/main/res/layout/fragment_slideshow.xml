@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.slideshow.ScanFragment" >
+
+    <!-- Scan Barcode and Scan NFC buttons -->
+    <LinearLayout
+        android:id="@+id/topButtonsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="#D0D5DD"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/b2"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9E77ED"
+            android:text="Scan Barcode"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:rippleColor="@color/material_dynamic_neutral70" />
+
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/b3"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D6BBFB"
+            android:text="Scan NFC"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:iconPadding="?android:attr/windowTitleSize"
+            app:rippleColor="@color/material_dynamic_neutral90" />
+    </LinearLayout>
+
+    <!-- Image Viewer -->
+
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="411dp"
+        android:layout_height="222dp"
+        android:layout_marginTop="44dp"
+        android:accessibilityHeading="true"
+        android:adjustViewBounds="false"
+        android:background="@drawable/rounded_corners_blue"
+        android:cropToPadding="false"
+        android:padding="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintDimensionRatio="H,16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topButtonsLayout"
+        tools:src="@tools:sample/avatars" />
+
+    <TableLayout
+        android:id="@+id/tl1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="#D0D5DD"
+        app:layout_constraintBottom_toTopOf="@id/bottomButtonsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv1">
+
+        <!-- First Table Rows -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- First Column - Item Info -->
+
+            <!-- Second Column - Placeholder -->
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Item ID"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="Item ID"
+                android:padding="8dp"
+                android:textColor="#757575" />
+
+        </TableRow>
+
+        <!-- 2nd Table Rows -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- First Column - Item Info -->
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Item Name"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+            <!-- Second Column - Placeholder -->
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="Item Name"
+                android:padding="8dp"
+                android:textColor="#757575" />
+
+        </TableRow>
+
+        <!-- 3rd Table Rows -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- First Column - Item Info -->
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Date Added"
+                android:textColor="#212121" />
+
+            <!-- Second Column - Editable EditText -->
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="Date Added"
+                android:padding="8dp"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <!-- 4th Table Rows -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- First Column - Item Info -->
+            <TextView
+                android:id="@+id/tv7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Exp Date"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+            <!-- Second Column - Editable EditText -->
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:inputType="date"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <!-- Bottom buttons -->
+    <LinearLayout
+        android:id="@+id/bottomButtonsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_blue"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/b4"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#4169E1"
+            android:text="Save Data" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/b5"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#4169E1"
+            android:text="Clear Fields" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
