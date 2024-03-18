@@ -136,10 +136,10 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
                 String messageAsString = ndefMessageToString(mNdefMessage);
                 nfc_contents.setText(messageAsString);
             } else {
-                nfc_contents.setText("No NdefMessage found on the NFC tag.");
+                nfc_contents.setText("No Contents");
             }
 
-            if (isWriteMode == true) {
+            if (isWriteMode) {
                 // Or if we want to write a Ndef message
                 // Create a Ndef Record
                 NdefRecord mRecord = NdefRecord.createTextRecord("en", edit_message.getText().toString());
@@ -153,11 +153,9 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
                     mNdef.writeNdefMessage(mMsg);
 
                     // Success if got to here
-                    runOnUiThread(() -> {
-                        Toast.makeText(getApplicationContext(),
-                                "Write to NFC Success",
-                                Toast.LENGTH_SHORT).show();
-                    });
+                    runOnUiThread(() -> Toast.makeText(getApplicationContext(),
+                            "Write to NFC Success",
+                            Toast.LENGTH_SHORT).show());
 
                     // Make a Sound
                     try {
@@ -196,6 +194,7 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
         }
     }
 
+
     private String ndefMessageToString(NdefMessage message) {
         if (message == null)
             return "";
@@ -208,82 +207,12 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
         return sb.toString();
     }
 
-
-
-    private void writeToTag(String text) {
-        // Read and or write to Tag here to the appropriate Tag Technology type class
-        // in this example the card should be an Ndef Technology Type
-        Ndef mNdef = Ndef.get(tag);
-
-        // Check that it is an Ndef capable card
-        if (mNdef != null) {
-
-            // If we want to read
-            // As we did not turn on the NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK
-            // We can get the cached Ndef message the system read for us.
-
-            NdefMessage mNdefMessage = mNdef.getCachedNdefMessage();
-
-
-            // Or if we want to write a Ndef message
-            // Create a Ndef Record
-            NdefRecord mRecord = NdefRecord.createTextRecord("en", text);
-
-            // Add to a NdefMessage
-            NdefMessage mMsg = new NdefMessage(mRecord);
-
-            // Catch errors
-            try {
-                mNdef.connect();
-                mNdef.writeNdefMessage(mMsg);
-
-                // Success if got to here
-                runOnUiThread(() -> {
-                    Toast.makeText(getApplicationContext(),
-                            "Write to NFC Success",
-                            Toast.LENGTH_SHORT).show();
-                });
-
-                // Make a Sound
-                try {
-                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),
-                            notification);
-                    r.play();
-                } catch (Exception e) {
-                    // Some error playing sound
-                }
-
-            } catch (FormatException e) {
-                // if the NDEF Message to write is malformed
-            } catch (TagLostException e) {
-                // Tag went out of range before operations were complete
-            } catch (IOException e) {
-                // if there is an I/O failure, or the operation is cancelled
-            } catch (SecurityException e) {
-                // The SecurityException is only for Android 12L and above
-                // The Tag object might have gone stale by the time
-                // the code gets to process it, with a new one been
-                // delivered (for the same or different Tag)
-                // The SecurityException is thrown if you are working on
-                // a stale Tag
-            } finally {
-                // Be nice and try and close the tag to
-                // Disable I/O operations to the tag from this TagTechnology object, and release resources.
-                try {
-                    mNdef.close();
-                } catch (IOException e) {
-                    // if there is an I/O failure, or the operation is cancelled
-                }
-            }
-        }
-    }
-
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
 
+            assert action != null;
             if (action.equals(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED)) {
                 final int state = intent.getIntExtra(NfcAdapter.EXTRA_ADAPTER_STATE, NfcAdapter.STATE_OFF);
                 switch (state) {
