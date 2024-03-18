@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.writenfc.WriteFragment">
+    android:background="@color/teal_200">
 
     <LinearLayout
         android:id="@+id/layoutTextView"
-        android:layout_width="407dp"
-        android:layout_height="218dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="@android:color/white"
-        android:outlineSpotShadowColor="@android:color/black"
-        android:outlineAmbientShadowColor="@android:color/black"
+        android:layout_margin="16dp"
         android:elevation="4dp"
         android:padding="16dp">
 
@@ -25,9 +19,10 @@
             android:id="@+id/tv3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NFC Tag Information"
-            android:textColor="@android:color/black"
+            android:hint="Tag Information"
+            android:textColor="@color/black"
             android:textSize="18sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -35,12 +30,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layoutTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_below="@id/layoutTextView"
         android:background="@android:color/white"
-        android:outlineSpotShadowColor="@android:color/black"
-        android:outlineAmbientShadowColor="@android:color/black"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:elevation="4dp"
         android:padding="16dp">
 
@@ -49,8 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Write To NFC"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:backgroundTint="@color/teal_700" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -58,12 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layoutButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_below="@id/layoutButton"
         android:background="@android:color/white"
-        android:outlineSpotShadowColor="@android:color/black"
-        android:outlineAmbientShadowColor="@android:color/black"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:elevation="4dp"
         android:padding="16dp">
 
@@ -73,8 +66,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="Tag Information"
-            android:textColor="@android:color/black"
+            android:hint="Tag Information"
+            android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -82,8 +75,11 @@
         android:id="@+id/iV2"
         android:layout_width="245dp"
         android:layout_height="250dp"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="413dp"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:layout_below="@id/layoutEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/background_image"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

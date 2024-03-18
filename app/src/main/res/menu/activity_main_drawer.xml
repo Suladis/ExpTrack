@@ -26,5 +26,10 @@
             android:id="@+id/nav_writenfc"
             android:icon="@drawable/nfc_24px"
             android:title="@string/menu_writenfc" />
+
+        <item
+            android:id="@+id/nav_writetag"
+            android:icon="@drawable/nfc_24px"
+            android:title="@string/menu_writenfc" />
     </group>
 </menu>

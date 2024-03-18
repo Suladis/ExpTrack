@@ -35,4 +35,11 @@
         android:label="Write NFC"
         tools:layout="@layout/fragment_write" />
 
+    <activity
+        android:id="@+id/nav_writetag"
+        android:name="com.example.exptrack.WriteNFC"
+        android:label="Write NFC"
+        tools:layout="@layout/fragment_write" />
+
+
 </navigation>

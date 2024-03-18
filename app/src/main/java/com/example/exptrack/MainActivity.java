@@ -18,7 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.exptrack.databinding.ActivityMainBinding;
-import com.example.exptrack.ui.writenfc.WriteFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,14 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_writenfc);
-        if (fragment instanceof WriteFragment) {
-            ((WriteFragment) fragment).handleNfcIntent(intent);
-        }
-    }
 
 
 
