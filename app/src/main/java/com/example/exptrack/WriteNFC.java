@@ -70,8 +70,6 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
         this.registerReceiver(mReceiver, filter);
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -94,7 +92,6 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
         }
 
     }
-
 
     @Override
     protected void onPause() {
@@ -125,18 +122,34 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
         Ndef mNdef = Ndef.get(tag);
 
         // Check that it is an Ndef capable card
+        // Check that it is an Ndef capable card
         if (mNdef != null) {
+            // Connect to the tag
+            try {
+                mNdef.connect();
 
-            // If we want to read
-            // As we did not turn on the NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK
-            // We can get the cached Ndef message the system read for us.
+                // Get the NDEF message from the tag
+                NdefMessage ndefMessage = mNdef.getNdefMessage();
 
-            NdefMessage mNdefMessage = mNdef.getCachedNdefMessage();
-            if (mNdefMessage != null) {
-                String messageAsString = ndefMessageToString(mNdefMessage);
-                nfc_contents.setText(messageAsString);
-            } else {
-                nfc_contents.setText("No Contents");
+                if (ndefMessage != null) {
+
+                    String text = new String(ndefMessage.getRecords()[0].getPayload());
+                    String tagRecord = text.substring(3);
+
+                    // Display or process the NDEF message as needed
+                    nfc_contents.setText(tagRecord);
+                } else {
+                    nfc_contents.setText("No NDEF message found on the NFC tag.");
+                }
+
+                // Close the connection
+                mNdef.close();
+            } catch (IOException | FormatException e) {
+                // Handle the exception (e.g., log it, show an error message)
+                e.printStackTrace();
+            }
+        } else{
+                nfc_contents.setText("No NdefMessage found on the NFC tag.");
             }
 
             if (isWriteMode) {
@@ -192,27 +205,13 @@ public class WriteNFC extends Activity implements NfcAdapter.ReaderCallback {
                 isWriteMode = false;
             }
         }
-    }
 
-
-    private String ndefMessageToString(NdefMessage message) {
-        if (message == null)
-            return "";
-
-        NdefRecord[] records = message.getRecords();
-        StringBuilder sb = new StringBuilder();
-        for (NdefRecord record : records) {
-            sb.append(new String(record.getPayload()));
-        }
-        return sb.toString();
-    }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
 
-            assert action != null;
             if (action.equals(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED)) {
                 final int state = intent.getIntExtra(NfcAdapter.EXTRA_ADAPTER_STATE, NfcAdapter.STATE_OFF);
                 switch (state) {
