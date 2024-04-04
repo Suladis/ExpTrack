@@ -1,0 +1,23 @@
+<!-- res/drawable/rounded_top_bottom.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Top half -->
+    <item android:top="0dp" android:bottom="@dimen/_50sdp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="0dp" /> <!-- Adjust the radius as needed -->
+        </shape>
+        <bitmap
+            android:src="@drawable/nfc_24px"
+            android:gravity="fill"
+            android:tileMode="repeat" />
+    </item>
+
+    <!-- Bottom half -->
+    <item android:top="@dimen/_50sdp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="25dp" /> <!-- Adjust the radius as needed -->
+            <solid android:color="@color/design_default_color_on_primary" /> <!-- Fill color for the bottom half -->
+        </shape>
+    </item>
+
+</layer-list>

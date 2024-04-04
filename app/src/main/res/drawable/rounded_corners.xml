@@ -3,4 +3,5 @@
     android:shape="rectangle">
     <corners android:radius="25dp" /> <!-- Adjust the radius as needed -->
     <solid android:color="@color/white" /> <!-- Fill color for the shape -->
+
 </shape>

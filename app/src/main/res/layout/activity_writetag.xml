@@ -1,85 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/layoutTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@android:color/white"
-        android:layout_margin="16dp"
-        android:elevation="4dp"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv3"
+
+        <LinearLayout
+            android:id="@+id/layoutTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tag Information"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tag Information"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-    <LinearLayout
-        android:id="@+id/layoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/layoutTextView"
-        android:background="@android:color/white"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:elevation="4dp"
-        android:padding="16dp">
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/b1"
+        <LinearLayout
+            android:id="@+id/layoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Write To NFC"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:backgroundTint="@color/teal_700" />
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_700"
+                android:text="Write To NFC"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-    <LinearLayout
-        android:id="@+id/layoutEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/layoutButton"
-        android:background="@android:color/white"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:elevation="4dp"
-        android:padding="16dp">
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/et1"
+        <LinearLayout
+            android:id="@+id/layoutEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Tag Information"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tag Information"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iV2"
+            android:layout_width="245dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/background_image"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/iV2"
-        android:layout_width="245dp"
-        android:layout_height="250dp"
-        android:layout_below="@id/layoutEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/background_image"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true" />
+    <!-- NavigationView -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/activity_main_drawer"/>
 
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
